@@ -70,6 +70,12 @@ class Home extends CI_Controller {
 		$this->db->delete('crud1', array('id' => $id));
 		redirect();
 	}
+	public function autocomplete() {
+
+		$query = $this->db->get('crud1', array('city_name'));
+		echo "string";
+		// return $data = $query->result();
+	}
 }
 
 /* End of file home.php */

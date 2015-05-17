@@ -94,7 +94,7 @@
 												<label for="age">Age</label>
 
 												<input type="text" class="form-control bfh-number" name="age"
-												 placeholder="Enter Age" data-min="15" data-max="80" >
+												  data-min="15" data-max="80" >
 												<div class="radio" id="gender">Gender
 													<label>
 														<input type="radio" name="gender" id="" value="M" checked="">
@@ -234,21 +234,51 @@ function editRow(varid){
 
 }
 
+	//  $i=0;
+	// while($row = $result)
+	//  {	$response[$i][$id]=$row['id'];
+	//  	$response[$i][$city_name]=$row['city_name'];
+	// 	$data['posts'][$i]=$response[$i];
+	// 	$i=$i+1;
+	//  }
+	// $json_string = json_encode($data['posts']);
+	// // $file = 'bootstrap_fill.json';
+	// // file_put_contents($file,$json_string);
+	// // @header('Location:bootstrap_data.php')
 
-	var availableTags = [
+	 // var availableTags = [
 
-      "Airoli","Ambivli","Asangaon","Belapur",
-      "Dombivli", "Ghansoli",
-      "Kalyan","Koperkhairane", "Kharghar","Mumbai",
-      "Rabale",
-      "Shahad","Thane",
-      "Titwala"
+  //     "Airoli","Ambivli","Asangaon","Belapur",
+  //     "Dombivli", "Ghansoli",
+  //      "Kalyan","Koperkhairane", "Kharghar","Mumbai",
+  //     "Rabale",
+  //     "Shahad","Thane",
+  //      "Titwala"
 
-    ];
+  //   ];
+ $(document).ready(function () {
+	 $( "input[name='city_name']" ).autocomplete({
+    source: function(request,response) {
+                $.ajax({
+                    url: "home/autocomplete",
+                    type: "POST",
+                    dataType: "json",
+                    // data: { term: request.term },
+                    success: function (data) {
+                    	console.log(data);
+                    //     response($.map($data, function (item) {
+                    //         return { label: item.city_name, value: item.city_name };
+                    //     }))
 
-	$( "input[name='city_name']" ).autocomplete({
-      source: availableTags
-    });
+                    // }
+                })
+            },
+            messages: {
+                noResults: "", results: ""
+            }
+        });
+
+     });
 </script>
 </body>
 </html>
